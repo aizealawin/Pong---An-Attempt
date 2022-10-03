@@ -2,7 +2,7 @@
 
 #### Making a Pong Game using only JS by Kusal Tholka Mudalige
 
-#### [Trello Board](https://trello.com/b/9ZgeP3Pe/pong-an-attempt) - Click me for live updates.
+#### [Trello Board](https://trello.com/b/9ZgeP3Pe/pong-an-attempt) - Click me for active updates.
 
 ## **_Description_**
 
