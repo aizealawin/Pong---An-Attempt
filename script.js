@@ -51,11 +51,23 @@ const ballMotion = () => {
 
   if (
     ball.y > paddleOne.y - rad &&
-    (ball.x > paddleOne.x || ball.x > paddleOne.x + paddleOne.weight)
+    ball.x > paddleOne.x &&
+    ball.x < paddleOne.x + paddleOne.weight
   ) {
     moveY = -moveY
   }
 }
+window.addEventListener(`keydown`, (e) => {
+  switch (e.key) {
+    case `ArrowLeft`:
+      paddleOne.x -= 10
+      console.log(`this works`)
+      break
+    case `ArrowRight`:
+      paddleOne.x += 10
+      break
+  }
+})
 setInterval(ballMotion, 10)
 
 const paddleOneMotion = () => {}
