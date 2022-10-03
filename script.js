@@ -5,11 +5,19 @@ const ball = {
   y: 25
 }
 const paddleOne = {
-  x: 550,
+  x: 325,
   y: 550,
   height: 50,
   weight: 150
 }
+
+const paddleTwo = {
+  x: 325,
+  y: 0,
+  height: 50,
+  weight: 150
+}
+
 // Basic ball bouncing template - https://medium.com/@danny.jamesbuckley/html-canvas-animation-bouncing-ball-c5c1d16ebe1a
 
 // Set rules to increase speed with each successful collision
@@ -49,10 +57,24 @@ const ballMotion = () => {
   ctx.fill()
   ctx.closePath()
 
+  ctx.beginPath()
+  ctx.fillStyle = 'blue'
+  ctx.rect(paddleTwo.x, paddleTwo.y, paddleTwo.weight, paddleTwo.height)
+  ctx.fill()
+  ctx.closePath()
+
   if (
     ball.y > paddleOne.y - rad &&
     ball.x > paddleOne.x &&
     ball.x < paddleOne.x + paddleOne.weight
+  ) {
+    moveY = -moveY
+  }
+
+  if (
+    ball.y < paddleTwo.y + paddleTwo.height + rad &&
+    ball.x > paddleTwo.x &&
+    ball.x < paddleTwo.x + paddleTwo.weight
   ) {
     moveY = -moveY
   }
@@ -65,6 +87,12 @@ window.addEventListener(`keydown`, (e) => {
       break
     case `ArrowRight`:
       paddleOne.x += 10
+      break
+    case `ArrowUp`:
+      paddleTwo.x -= 10
+      break
+    case `ArrowDown`:
+      paddleTwo.x += 10
       break
   }
 })

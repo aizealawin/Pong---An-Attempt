@@ -1,13 +1,6 @@
 #canvas {
-  background: ivory;
+  background: orange;
   padding: 0;
   margin: 0, auto;
   display: block;
-}
-.ball{
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: black;
-  position: absolute;
 }
