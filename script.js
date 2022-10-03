@@ -64,13 +64,19 @@ const ballMotion = () => {
   ctx.closePath()
 
   if (
-    ball.y > paddleOne.y - rad &&
+    ball.y + rad > paddleOne.y &&
     ball.x > paddleOne.x &&
     ball.x < paddleOne.x + paddleOne.weight
   ) {
     moveY = -moveY
   }
-
+  // if (
+  //   ball.y + rad < paddleTwo.y + paddleTwo.height &&
+  //   (ball.x - rad > paddleTwo.x ||
+  //     ball.x + rad < paddleTwo.x + paddleTwo.weight)
+  // ) {
+  //   moveX = -moveX
+  // }
   if (
     ball.y < paddleTwo.y + paddleTwo.height + rad &&
     ball.x > paddleTwo.x &&
@@ -88,6 +94,10 @@ window.addEventListener(`keydown`, (e) => {
     case `ArrowRight`:
       paddleOne.x += 10
       break
+  }
+})
+window.addEventListener(`keydown`, (e) => {
+  switch (e.key) {
     case `ArrowUp`:
       paddleTwo.x -= 10
       break
