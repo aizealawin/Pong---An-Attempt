@@ -37,6 +37,7 @@ let whoScored = 0
 const runScorePoint = () => {
   if (whoScored === 1) {
     p1Score.innerHTML = parseInt(p1Score.innerHTML) + 1
+    reset()
     whoScored = 0
   } else if (whoScored === 2) {
     p2Score.innerHTML = parseInt(p2Score.innerHTML) + 1
@@ -103,7 +104,9 @@ const ballMotion = () => {
   if (ball.y + rad > paddleOne.y + paddleOne.height) {
     whoScored = 2
     runScorePoint()
-    reset()
+  } else if (ball.y < paddleTwo.y + paddleTwo.height - 10) {
+    whoScored = 1
+    runScorePoint()
   }
 }
 
