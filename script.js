@@ -1,8 +1,8 @@
 const c = document.getElementById(`canvas`)
 const ctx = c.getContext(`2d`)
 const ball = {
-  x: 25,
-  y: 25
+  x: 400,
+  y: 300
 }
 const paddleOne = {
   x: 325,
@@ -23,7 +23,7 @@ const paddleTwo = {
 // Set rules to increase speed with each successful collision
 const speed = 3
 // Create a random starting angle integer
-const startingAngle = 40
+const startingAngle = Math.floor(Math.random() * 361)
 // Ball size
 const rad = 20
 
@@ -36,12 +36,19 @@ let whoScored = 0
 
 const runScorePoint = () => {
   if (whoScored === 1) {
-    p1Score.innerHTML += 1
+    p1Score.innerHTML = parseInt(p1Score.innerHTML) + 1
     whoScored = 0
   } else if (whoScored === 2) {
-    p1Score.innerHTML += 1
+    p2Score.innerHTML = parseInt(p2Score.innerHTML) + 1
+    reset()
     whoScored = 0
   }
+  console.log(`hello`)
+}
+
+const reset = () => {
+  ball.x = 400
+  ball.y = 300
 }
 
 const ballMotion = () => {
@@ -92,6 +99,12 @@ const ballMotion = () => {
   ) {
     moveY = -moveY
   }
+
+  if (ball.y + rad > paddleOne.y + paddleOne.height) {
+    whoScored = 2
+    runScorePoint()
+    reset()
+  }
 }
 
 const keyLogger = {
@@ -107,6 +120,7 @@ const paddleMotion = () => {
       case `ArrowLeft`:
         keyLogger.ArrowLeft = true
         paddleOne.x -= 10
+
         break
       case `ArrowRight`:
         keyLogger.ArrowRight = true
@@ -118,7 +132,6 @@ const paddleMotion = () => {
     switch (e.code) {
       case `KeyA`:
         keyLogger.KeyA = true
-
         paddleTwo.x -= 10
         break
       case `KeyD`:
@@ -127,10 +140,27 @@ const paddleMotion = () => {
         break
     }
   })
-  // window.addEventListener(`keyup`)
+  window.addEventListener(`keyup`, (e) => {
+    switch (e.code) {
+      case `KeyA`:
+        keyLogger.KeyA = false
+      case `KeyD`:
+        keyLogger.KeyD = false
+        break
+      case `ArrowLeft`:
+        keyLogger.ArrowLeft = false
+        break
+      case `ArrowRight`:
+        keyLogger.ArrowRight = false
+    }
+  })
 }
 paddleMotion()
-setInterval(ballMotion, 10)
+window.addEventListener('keypress', (e) => {
+  if (e.code === `Space`) {
+    setInterval(ballMotion, 10)
+  }
+})
 
-const paddleOneMotion = () => {}
-paddleOneMotion()
+// const paddleOneMotion = () => {}
+// paddleOneMotion()
