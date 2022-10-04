@@ -29,8 +29,23 @@ const rad = 20
 
 let moveX = Math.cos((Math.PI / 180) * startingAngle) * speed
 let moveY = Math.sin((Math.PI / 180) * startingAngle) * speed
+
+const p1Score = document.querySelector(`.p1Score`)
+const p2Score = document.querySelector(`.p2Score`)
+let whoScored = 0
+
+const runScorePoint = () => {
+  if (whoScored === 1) {
+    p1Score.innerHTML += 1
+    whoScored = 0
+  } else if (whoScored === 2) {
+    p1Score.innerHTML += 1
+    whoScored = 0
+  }
+}
+
 const ballMotion = () => {
-  //x pos, y pos, canvas width, canvas height
+  //x pos, y pos, canvas width, canvas height, defining walls for the ball
   ctx.clearRect(0, 0, 800, 600)
   //If ball at pos x is greater than the canvas width minus ball size OR ball at pos x is less than radius subtract from moveX
   if (ball.x > c.width - rad || ball.x < rad) {
@@ -70,13 +85,6 @@ const ballMotion = () => {
   ) {
     moveY = -moveY
   }
-  // if (
-  //   ball.y + rad < paddleTwo.y + paddleTwo.height &&
-  //   (ball.x - rad > paddleTwo.x ||
-  //     ball.x + rad < paddleTwo.x + paddleTwo.weight)
-  // ) {
-  //   moveX = -moveX
-  // }
   if (
     ball.y < paddleTwo.y + paddleTwo.height + rad &&
     ball.x > paddleTwo.x &&
@@ -85,27 +93,43 @@ const ballMotion = () => {
     moveY = -moveY
   }
 }
-window.addEventListener(`keydown`, (e) => {
-  switch (e.key) {
-    case `ArrowLeft`:
-      paddleOne.x -= 10
-      console.log(`this works`)
-      break
-    case `ArrowRight`:
-      paddleOne.x += 10
-      break
-  }
-})
-window.addEventListener(`keydown`, (e) => {
-  switch (e.code) {
-    case `KeyA`:
-      paddleTwo.x -= 10
-      break
-    case `KeyD`:
-      paddleTwo.x += 10
-      break
-  }
-})
+
+const keyLogger = {
+  ArrowLeft: false,
+  ArrowRight: false,
+  KeyA: false,
+  KeyD: false
+}
+
+const paddleMotion = () => {
+  window.addEventListener(`keydown`, (e) => {
+    switch (e.key) {
+      case `ArrowLeft`:
+        keyLogger.ArrowLeft = true
+        paddleOne.x -= 10
+        break
+      case `ArrowRight`:
+        keyLogger.ArrowRight = true
+        paddleOne.x += 10
+        break
+    }
+  })
+  window.addEventListener(`keydown`, (e) => {
+    switch (e.code) {
+      case `KeyA`:
+        keyLogger.KeyA = true
+
+        paddleTwo.x -= 10
+        break
+      case `KeyD`:
+        keyLogger.KeyD = true
+        paddleTwo.x += 10
+        break
+    }
+  })
+  // window.addEventListener(`keyup`)
+}
+paddleMotion()
 setInterval(ballMotion, 10)
 
 const paddleOneMotion = () => {}
