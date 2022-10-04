@@ -97,11 +97,11 @@ window.addEventListener(`keydown`, (e) => {
   }
 })
 window.addEventListener(`keydown`, (e) => {
-  switch (e.key) {
-    case `ArrowUp`:
+  switch (e.code) {
+    case `KeyA`:
       paddleTwo.x -= 10
       break
-    case `ArrowDown`:
+    case `KeyD`:
       paddleTwo.x += 10
       break
   }
