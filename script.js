@@ -18,6 +18,8 @@ const paddleTwo = {
   weight: 150
 }
 
+let interval = 10
+
 // Basic ball bouncing template - https://medium.com/@danny.jamesbuckley/html-canvas-animation-bouncing-ball-c5c1d16ebe1a
 
 // Set rules to increase speed with each successful collision
@@ -44,12 +46,12 @@ const runScorePoint = () => {
     reset()
     whoScored = 0
   }
-  console.log(`hello`)
 }
 
 const reset = () => {
   ball.x = 400
   ball.y = 300
+  clearInterval(ballMotion)
 }
 
 const ballMotion = () => {
@@ -110,23 +112,13 @@ const ballMotion = () => {
   }
 }
 
-const keyLogger = {
-  ArrowLeft: false,
-  ArrowRight: false,
-  KeyA: false,
-  KeyD: false
-}
-
 const paddleMotion = () => {
   window.addEventListener(`keydown`, (e) => {
     switch (e.key) {
       case `ArrowLeft`:
-        keyLogger.ArrowLeft = true
         paddleOne.x -= 10
-
         break
       case `ArrowRight`:
-        keyLogger.ArrowRight = true
         paddleOne.x += 10
         break
     }
@@ -134,27 +126,11 @@ const paddleMotion = () => {
   window.addEventListener(`keydown`, (e) => {
     switch (e.code) {
       case `KeyA`:
-        keyLogger.KeyA = true
         paddleTwo.x -= 10
         break
       case `KeyD`:
-        keyLogger.KeyD = true
         paddleTwo.x += 10
         break
-    }
-  })
-  window.addEventListener(`keyup`, (e) => {
-    switch (e.code) {
-      case `KeyA`:
-        keyLogger.KeyA = false
-      case `KeyD`:
-        keyLogger.KeyD = false
-        break
-      case `ArrowLeft`:
-        keyLogger.ArrowLeft = false
-        break
-      case `ArrowRight`:
-        keyLogger.ArrowRight = false
     }
   })
 }
@@ -164,6 +140,3 @@ window.addEventListener('keypress', (e) => {
     setInterval(ballMotion, 10)
   }
 })
-
-// const paddleOneMotion = () => {}
-// paddleOneMotion()
