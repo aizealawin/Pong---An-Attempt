@@ -18,14 +18,15 @@ const paddleTwo = {
   weight: 150
 }
 
-let interval = 10
-
 // Basic ball bouncing template - https://medium.com/@danny.jamesbuckley/html-canvas-animation-bouncing-ball-c5c1d16ebe1a
 
 // Set rules to increase speed with each successful collision
 const speed = 3
 // Create a random starting angle integer
-const startingAngle = Math.floor(Math.random() * 361)
+let startingAngle = Math.floor(
+  Math.random() * 121 * (Math.random() < 0.5 ? -1 : 1)
+)
+console.log(startingAngle)
 // Ball size
 const rad = 20
 
@@ -36,6 +37,17 @@ const p1Score = document.querySelector(`.p1Score`)
 const p2Score = document.querySelector(`.p2Score`)
 let whoScored = 0
 
+reset = () => {
+  ball.x = 400
+  ball.y = 300
+  clearInterval(refreshIntervalId)
+  startingAngle = Math.floor(
+    Math.random() * 121 * (Math.random() < 0.5 ? -1 : 1)
+  )
+  moveX = Math.cos((Math.PI / 180) * startingAngle) * speed
+  moveY = Math.sin((Math.PI / 180) * startingAngle) * speed
+  console.log(startingAngle)
+}
 const runScorePoint = () => {
   if (whoScored === 1) {
     p1Score.innerHTML = parseInt(p1Score.innerHTML) + 1
@@ -46,12 +58,6 @@ const runScorePoint = () => {
     reset()
     whoScored = 0
   }
-}
-
-const reset = () => {
-  ball.x = 400
-  ball.y = 300
-  clearInterval(ballMotion)
 }
 
 const ballMotion = () => {
@@ -103,7 +109,7 @@ const ballMotion = () => {
     moveY = -moveY
   }
 
-  if (ball.y + rad > paddleOne.y + paddleOne.height) {
+  if (ball.y + rad > paddleOne.y + 25) {
     whoScored = 2
     runScorePoint()
   } else if (ball.y < paddleTwo.y + paddleTwo.height - 10) {
@@ -135,8 +141,10 @@ const paddleMotion = () => {
   })
 }
 paddleMotion()
+// let refreshIntervalId = setInterval(ballMotion, 10)
+
 window.addEventListener('keypress', (e) => {
   if (e.code === `Space`) {
-    setInterval(ballMotion, 10)
+    refreshIntervalId = setInterval(ballMotion, 10)
   }
 })
