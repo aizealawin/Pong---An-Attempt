@@ -45,6 +45,7 @@ reset = () => {
   )
   moveX = Math.cos((Math.PI / 180) * startingAngle) * speed
   moveY = Math.sin((Math.PI / 180) * startingAngle) * speed
+  startGame()
 }
 const runScorePoint = () => {
   if (whoScored === 1) {
@@ -141,9 +142,16 @@ const paddleMotion = () => {
 }
 paddleMotion()
 // let refreshIntervalId = setInterval(ballMotion, 10)
-
-window.addEventListener('keypress', (e) => {
+const startGame = (e) => {
+  window.addEventListener(`keypress`, startGame)
   if (e.code === `Space`) {
     refreshIntervalId = setInterval(ballMotion, 10)
+    window.removeEventListener(`keypress`, startGame)
   }
-})
+}
+window.addEventListener(`keypress`, startGame)
+// window.addEventListener('keypress', (e) => {
+//   if (e.code === `Space`) {
+//     refreshIntervalId = setInterval(ballMotion, 10)
+//   }
+// })
