@@ -24,15 +24,12 @@ const paddleTwo = {
 const speed = 3
 // Create a random starting angle integer
 let startingAngle = Math.floor(
-  Math.random() * 121 * (Math.random() < 0.5 ? -1 : 1)
+  Math.random() * 181 * (Math.random() < 0.5 ? -1 : 1)
 )
-console.log(startingAngle)
 // Ball size
 const rad = 20
-
 let moveX = Math.cos((Math.PI / 180) * startingAngle) * speed
 let moveY = Math.sin((Math.PI / 180) * startingAngle) * speed
-
 const p1Score = document.querySelector(`.p1Score`)
 const p2Score = document.querySelector(`.p2Score`)
 let whoScored = 0
@@ -40,13 +37,14 @@ let whoScored = 0
 reset = () => {
   ball.x = 400
   ball.y = 300
+  paddleOne.x = 325
+  paddleTwo.x = 325
   clearInterval(refreshIntervalId)
   startingAngle = Math.floor(
-    Math.random() * 121 * (Math.random() < 0.5 ? -1 : 1)
+    Math.random() * 181 * (Math.random() < 0.5 ? -1 : 1)
   )
   moveX = Math.cos((Math.PI / 180) * startingAngle) * speed
   moveY = Math.sin((Math.PI / 180) * startingAngle) * speed
-  console.log(startingAngle)
 }
 const runScorePoint = () => {
   if (whoScored === 1) {
@@ -101,6 +99,7 @@ const ballMotion = () => {
   ) {
     moveY = -moveY
   }
+
   if (
     ball.y < paddleTwo.y + paddleTwo.height + rad &&
     ball.x > paddleTwo.x &&
@@ -122,20 +121,20 @@ const paddleMotion = () => {
   window.addEventListener(`keydown`, (e) => {
     switch (e.key) {
       case `ArrowLeft`:
-        paddleOne.x -= 10
+        paddleOne.x -= 25
         break
       case `ArrowRight`:
-        paddleOne.x += 10
+        paddleOne.x += 25
         break
     }
   })
   window.addEventListener(`keydown`, (e) => {
     switch (e.code) {
       case `KeyA`:
-        paddleTwo.x -= 10
+        paddleTwo.x -= 25
         break
       case `KeyD`:
-        paddleTwo.x += 10
+        paddleTwo.x += 25
         break
     }
   })
