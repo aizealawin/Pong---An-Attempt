@@ -122,20 +122,28 @@ const paddleMotion = () => {
   window.addEventListener(`keydown`, (e) => {
     switch (e.key) {
       case `ArrowLeft`:
-        paddleOne.x -= 25
+        if (paddleOne.x > 10) {
+          paddleOne.x -= 25
+        }
         break
       case `ArrowRight`:
-        paddleOne.x += 25
+        if (paddleOne.x < 650) {
+          paddleOne.x += 25
+        }
         break
     }
   })
   window.addEventListener(`keydown`, (e) => {
     switch (e.code) {
       case `KeyA`:
-        paddleTwo.x -= 25
+        if (paddleTwo.x > 10) {
+          paddleTwo.x -= 25
+        }
         break
       case `KeyD`:
-        paddleTwo.x += 25
+        if (paddleTwo.x < 650) {
+          paddleTwo.x += 25
+        }
         break
     }
   })
@@ -150,8 +158,3 @@ const startGame = (e) => {
   }
 }
 window.addEventListener(`keypress`, startGame)
-// window.addEventListener('keypress', (e) => {
-//   if (e.code === `Space`) {
-//     refreshIntervalId = setInterval(ballMotion, 10)
-//   }
-// })
