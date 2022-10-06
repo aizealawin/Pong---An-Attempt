@@ -31,8 +31,15 @@ let startingAngle = Math.floor(
 )
 // Ball size
 const rad = 20
-let moveX = Math.cos((Math.PI / 180) * startingAngle) * speed
-let moveY = Math.sin((Math.PI / 180) * startingAngle) * speed
+let moveX = (Math.random() * (4 - 2) + 2) * (Math.random() < 0.5 ? -1 : 1)
+
+console.log(moveX)
+// let moveX = Math.cos((Math.PI / 180) * startingAngle) * speed
+// let moveY = Math.sin((Math.PI / 180) * startingAngle) * speed
+
+let moveY = (Math.random() * (3 - 2) + 2) * (Math.random() < 0.5 ? -1 : 1)
+
+console.log(moveY)
 const p1Score = document.querySelector(`.p1Score`)
 const p2Score = document.querySelector(`.p2Score`)
 let whoScored = 0
@@ -46,8 +53,14 @@ reset = () => {
   startingAngle = Math.floor(
     Math.random() * 181 * (Math.random() < 0.5 ? -1 : 1)
   )
-  moveX = Math.cos((Math.PI / 180) * startingAngle) * speed
-  moveY = Math.sin((Math.PI / 180) * startingAngle) * speed
+  // moveX = Math.cos((Math.PI / 180) * startingAngle) * speed
+  moveX = (Math.random() * (4 - 2) + 2) * (Math.random() < 0.5 ? -1 : 1)
+  console.log(moveX)
+
+  // moveY = Math.sin((Math.PI / 180) * startingAngle) * speed
+  moveY = (Math.random() * (3 - 2) + 2) * (Math.random() < 0.5 ? -1 : 1)
+  console.log(moveY)
+
   startGame()
 }
 const runScorePoint = () => {
@@ -130,12 +143,12 @@ const paddleMotion = () => {
     switch (e.key) {
       case `ArrowLeft`:
         if (paddleOne.x > 10) {
-          paddleOne.x -= 25
+          paddleOne.x -= 35
         }
         break
       case `ArrowRight`:
         if (paddleOne.x < 650) {
-          paddleOne.x += 25
+          paddleOne.x += 35
         }
         break
     }
@@ -144,12 +157,12 @@ const paddleMotion = () => {
     switch (e.code) {
       case `KeyA`:
         if (paddleTwo.x > 10) {
-          paddleTwo.x -= 25
+          paddleTwo.x -= 35
         }
         break
       case `KeyD`:
         if (paddleTwo.x < 650) {
-          paddleTwo.x += 25
+          paddleTwo.x += 35
         }
         break
     }
