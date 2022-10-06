@@ -1,3 +1,21 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.header, .pongContainer, .scoreboard {
+  margin: 15px auto;
+}
+
+
+h2 {
+  padding: 0px 10px;
+}
+.scoreboard {
+  display: flex;
+
+}
+
 #canvas {
   background: orange;
   padding: 0;
