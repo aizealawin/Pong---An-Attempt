@@ -18,6 +18,9 @@ const paddleTwo = {
   weight: 150
 }
 
+let baseP1Score = 0
+let baseP2Score = 0
+
 // Basic ball bouncing template - https://medium.com/@danny.jamesbuckley/html-canvas-animation-bouncing-ball-c5c1d16ebe1a
 
 // Set rules to increase speed with each successful collision
@@ -49,11 +52,13 @@ reset = () => {
 }
 const runScorePoint = () => {
   if (whoScored === 1) {
-    p1Score.innerHTML = parseInt(p1Score.innerHTML) + 1
+    baseP1Score += 1
+    p1Score.innerHTML = `PLAYER 1: ${baseP1Score}`
     reset()
     whoScored = 0
   } else if (whoScored === 2) {
-    p2Score.innerHTML = parseInt(p2Score.innerHTML) + 1
+    baseP2Score += 1
+    p2Score.innerHTML = `PLAYER 2: ${baseP2Score}`
     reset()
     whoScored = 0
   }
