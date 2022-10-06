@@ -53,11 +53,8 @@ reset = () => {
   startingAngle = Math.floor(
     Math.random() * 181 * (Math.random() < 0.5 ? -1 : 1)
   )
-  // moveX = Math.cos((Math.PI / 180) * startingAngle) * speed
   moveX = (Math.random() * (4 - 2) + 2) * (Math.random() < 0.5 ? -1 : 1)
   console.log(moveX)
-
-  // moveY = Math.sin((Math.PI / 180) * startingAngle) * speed
   moveY = (Math.random() * (3 - 2) + 2) * (Math.random() < 0.5 ? -1 : 1)
   console.log(moveY)
 
