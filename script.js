@@ -24,7 +24,7 @@ let baseP2Score = 0
 // Basic ball bouncing template - https://medium.com/@danny.jamesbuckley/html-canvas-animation-bouncing-ball-c5c1d16ebe1a
 
 // Set rules to increase speed with each successful collision
-const speed = 3
+const speed = 4.5
 // Create a random starting angle integer
 let startingAngle = Math.floor(
   Math.random() * 181 * (Math.random() < 0.5 ? -1 : 1)
@@ -81,19 +81,19 @@ const ballMotion = () => {
   ball.y += moveY
   // speed += 1
   ctx.beginPath()
-  ctx.fillStyle = 'black'
+  ctx.fillStyle = '#964B00'
   ctx.arc(ball.x, ball.y, rad, 0, Math.PI * 2)
   ctx.fill()
   ctx.closePath()
 
   ctx.beginPath()
-  ctx.fillStyle = 'blue'
+  ctx.fillStyle = '#E0A370'
   ctx.rect(paddleOne.x, paddleOne.y, paddleOne.weight, paddleOne.height)
   ctx.fill()
   ctx.closePath()
 
   ctx.beginPath()
-  ctx.fillStyle = 'blue'
+  ctx.fillStyle = '#709F9D'
   ctx.rect(paddleTwo.x, paddleTwo.y, paddleTwo.weight, paddleTwo.height)
   ctx.fill()
   ctx.closePath()
@@ -103,6 +103,7 @@ const ballMotion = () => {
     ball.x > paddleOne.x &&
     ball.x < paddleOne.x + paddleOne.weight
   ) {
+    ball.y -= 10
     moveY = -moveY
   }
 
@@ -111,6 +112,7 @@ const ballMotion = () => {
     ball.x > paddleTwo.x &&
     ball.x < paddleTwo.x + paddleTwo.weight
   ) {
+    ball.y += 10
     moveY = -moveY
   }
 

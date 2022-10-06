@@ -1,34 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 body {
   display: flex;
   flex-direction: column;
   width: 900px;
   margin: auto;
+  background-color: antiquewhite;
+  font-family: 'Righteous', cursive;
+
 }
 
-.header, .pongContainer, .scoreboard {
+.header, .pongContainer, .scoreboard{
   margin: 15px auto;
 }
-
+h1 {
+  color: #A16B56;
+}
 
 h2 {
   display: block;
-  padding: 0px 10px;
-  background-color: gainsboro;
+  padding: 10px;
+  background-color: ivory;
   width: 40%;
   text-align: center;
+  border: 2px solid #567D89;
+  border-radius: 20px; 
+}
+h3{
+  margin: auto;
+  color: #815645;
+}
+.p1Score {
+  color: #CA9365;
+}
+.p2Score {
+  color: #5A7F7E;
 }
 
 .scoreboard {
   display: flex;
   margin: auto;
-  width: 100%;
-  background-color: antiquewhite;
+  padding: 10px;
+  width: 800px;
+  border-radius: 20px;
   justify-content: space-between;
 }
 
 #canvas {
-  background: orange;
+  background: #E2D7A7;
   padding: 0;
   margin: 0, auto;
   display: block;
+  border-radius: 20px;
 }
