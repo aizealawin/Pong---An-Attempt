@@ -23,23 +23,9 @@ let baseP2Score = 0
 
 // Basic ball bouncing template - https://medium.com/@danny.jamesbuckley/html-canvas-animation-bouncing-ball-c5c1d16ebe1a
 
-// Set rules to increase speed with each successful collision
-const speed = 4.5
-// Create a random starting angle integer
-let startingAngle = Math.floor(
-  Math.random() * 181 * (Math.random() < 0.5 ? -1 : 1)
-)
-// Ball size
 const rad = 20
 let moveX = (Math.random() * (4 - 2) + 2) * (Math.random() < 0.5 ? -1 : 1)
-
-console.log(moveX)
-// let moveX = Math.cos((Math.PI / 180) * startingAngle) * speed
-// let moveY = Math.sin((Math.PI / 180) * startingAngle) * speed
-
 let moveY = (Math.random() * (3 - 2) + 2) * (Math.random() < 0.5 ? -1 : 1)
-
-console.log(moveY)
 const p1Score = document.querySelector(`.p1Score`)
 const p2Score = document.querySelector(`.p2Score`)
 let whoScored = 0
@@ -50,13 +36,8 @@ reset = () => {
   paddleOne.x = 325
   paddleTwo.x = 325
   clearInterval(refreshIntervalId)
-  startingAngle = Math.floor(
-    Math.random() * 181 * (Math.random() < 0.5 ? -1 : 1)
-  )
   moveX = (Math.random() * (4 - 2) + 2) * (Math.random() < 0.5 ? -1 : 1)
-  console.log(moveX)
   moveY = (Math.random() * (3 - 2) + 2) * (Math.random() < 0.5 ? -1 : 1)
-  console.log(moveY)
 
   startGame()
 }
@@ -80,16 +61,13 @@ const ballMotion = () => {
   //If ball at pos x is greater than the canvas width minus ball size OR ball at pos x is less than radius subtract from moveX
   if (ball.x > c.width - rad || ball.x < rad) {
     moveX = -moveX
-    // speed += 1
   }
   if (ball.y > c.height - rad || ball.y < rad) {
     moveY = -moveY
-    // speed += 1
   }
 
   ball.x += moveX
   ball.y += moveY
-  // speed += 1
   ctx.beginPath()
   ctx.fillStyle = '#964B00'
   ctx.arc(ball.x, ball.y, rad, 0, Math.PI * 2)
@@ -166,7 +144,6 @@ const paddleMotion = () => {
   })
 }
 paddleMotion()
-// let refreshIntervalId = setInterval(ballMotion, 10)
 const startGame = (e) => {
   window.addEventListener(`keypress`, startGame)
   if (e.code === `Space`) {

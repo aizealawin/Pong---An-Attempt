@@ -29,6 +29,7 @@ h2 {
 h3{
   margin: auto;
   color: #815645;
+  text-align: center;
 }
 .p1Score {
   color: #CA9365;
@@ -52,4 +53,50 @@ h3{
   margin: 0, auto;
   display: block;
   border-radius: 20px;
+}
+
+.main {
+  margin: 20px auto;
+  font-size: 50px;
+}
+
+h4{
+  margin: 2px auto;
+}
+
+button {
+  margin: 15px auto;
+  padding: 20px 80px;
+  border: 2px;
+  border-radius: 20px; 
+  background-color: #567D89;
+  font-family: 'Righteous', cursive;
+  font-size: 25px;
+  color: ivory;
+}
+
+button:hover, button:focus{
+  /* https://codepen.io/giana/pen/BZaGyP how to do button effects*/
+  animation: pulse 1s;
+  box-shadow: 0 0 0 15px transparent;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 #45646e; }
+}
+
+p { 
+margin:auto;
+}
+
+nav{
+  margin: 0px 10%;
+}
+
+ul{
+   list-style-type: none;
+}
+
+li{
+  margin: 10px;
 }

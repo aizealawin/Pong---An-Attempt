@@ -73,4 +73,18 @@
 
 ## **Credits**
 
-### Imagine having credits at this point hahahaha
+### Below is a list of resources I used during the course of this project!
+
+- https://medium.com/@danny.jamesbuckley/html-canvas-animation-bouncing-ball-c5c1d16ebe1a How to make the ball bounce
+
+- https://www.w3schools.com/jsref/event_onkeydown.asp Onkeydown syntax
+
+- https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection Collision detection
+
+- https://www.w3schools.com/html/html5_canvas.asp Canvas and drawing on it
+
+- https://www.javascripttutorial.net/web-apis/javascript-canvas/ More canvas syntax
+
+- https://codepen.io/giana/pen/BZaGyP Button effects in CSS
+
+- https://theuselessweb.com/ - Random Links on Landing Page
