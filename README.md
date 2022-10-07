@@ -4,6 +4,8 @@
 
 #### [Trello Board](https://trello.com/b/9ZgeP3Pe/pong-an-attempt) - Click me for active updates.
 
+#### [Hosted Project](https://my-pong.surge.sh/) - Click me to see the game.
+
 ## **_Description_**
 
 ### Pong - the famous two player game where on a canvas a randomly pathing ball is hit back and forth. After every successful hit, the ball's speed will incrementally increase.
@@ -88,3 +90,4 @@
 - https://codepen.io/giana/pen/BZaGyP Button effects in CSS
 
 - https://theuselessweb.com/ - Random Links on Landing Page
+  surg
